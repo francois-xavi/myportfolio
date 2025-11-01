@@ -609,31 +609,35 @@
     <nav>
         <div class="logo">FXC</div>
         <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#contact">Contact</a>
+            <a href="#about" data-i18n="nav.about">About</a>
+            <a href="#skills" data-i18n="nav.skills">Skills</a>
+            <a href="#experience" data-i18n="nav.experience">Experience</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </div>
+        <div>
+            <!-- Language toggle button -->
+            <button id="lang-toggle" class="btn" aria-label="Toggle language" title="Toggle language">EN</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <p class="hero-label">Hello! I'm <span>François-Xavier Coudea</span></p>
-            <h1>Backend Developer<br><span class="highlight">Python & Django Specialist</span></h1>
+            <p class="hero-label" data-i18n="hero.greeting">Hello! I'm <span>François-Xavier Coudea</span></p>
+            <h1 data-i18n="hero.title">Backend Developer<br><span class="highlight">Python & Django Specialist</span></h1>
             <div class="hero-subtitle">
-                <p>Crafting robust and scalable backend solutions</p>
+                <p data-i18n="hero.subtitle">Crafting robust and scalable backend solutions</p>
             </div>
             <div class="cta-buttons">
-                <a href="#projects" class="btn">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                <a href="#projects" class="btn"><span data-i18n="cta.view_projects">View Projects</span></a>
+                <a href="#contact" class="btn btn-secondary"><span data-i18n="cta.contact_me">Contact Me</span></a>
             </div>
         </div>
         <div class="avatar-content">
             <img src="https://i.ibb.co/hGLTyGj/professionnal-fx-portrait-removebg-preview.png" alt="François-Xavier Coudea" class="avatar">
             <!-- <a href="https://imgbb.com/"><img src="https://i.ibb.co/hGLTyGj/professionnal-fx-portrait-removebg-preview.png" alt="professionnal-fx-portrait-removebg-preview" border="0"></a> -->
         </div>
-            <p class="hero-subtitle">
+            <p class="hero-subtitle" data-i18n="hero.detail">
                 Building scalable APIs, automating workflows, and creating efficient data pipelines. 
                 Currently expanding into Data Engineering with a passion for delivering real business impact.
             </p>
@@ -642,9 +646,9 @@
 
     <!-- About Section -->
     <section id="about" class="container reveal">
-        <h2 class="section-title">About Me</h2>
+    <h2 class="section-title" data-i18n="about.title">About Me</h2>
         <div class="about-content">
-            <p>
+            <p data-i18n="about.content">
                 Results-driven Backend Developer specialized in Python and Django REST API, with proven experience 
                 building scalable APIs, automating workflows, and deploying containerized applications. I use n8n 
                 to create efficient automation and data pipelines (ETL, synchronization, integration). Currently 
@@ -656,7 +660,7 @@
 
     <!-- Skills Section -->
     <section id="skills" class="container reveal">
-        <h2 class="section-title">Technical Skills</h2>
+    <h2 class="section-title" data-i18n="skills.title">Technical Skills</h2>
         <div class="skills-grid">
             <div class="skill-card">
                 <div class="skill-icon"><i class="fas fa-terminal"></i></div>
@@ -716,7 +720,7 @@
 
     <!-- Experience Section -->
     <section id="experience" class="container reveal">
-        <h2 class="section-title">Work Experience</h2>
+    <h2 class="section-title" data-i18n="experience.title">Work Experience</h2>
         <div class="experience-timeline">
             <div class="experience-item">
                 <h3>Backend Developer (Python / Django)</h3>
@@ -754,7 +758,7 @@
 
     <!-- Projects Section -->
     <section class="container reveal">
-        <h2 class="section-title">Featured Projects</h2>
+    <h2 class="section-title" data-i18n="projects.title">Featured Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-image">
@@ -794,14 +798,14 @@
     <section id="contact" class="cta-section reveal">
         <div class="glow-orb" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
         <div class="cta-content">
-            <h2>Let's Work Together</h2>
-            <p>I'm currently looking to join a cross-functional team that values improving people's lives through accessible design.</p>
+            <h2 data-i18n="cta.title">Let's Work Together</h2>
+            <p data-i18n="cta.description">I'm currently looking to join a cross-functional team that values improving people's lives through accessible design.</p>
             <div class="cta-buttons">
                 <a href="mailto:coudeafx@gmail.com" class="btn">
-                    <i class="fas fa-envelope"></i> Get In Touch
+                    <i class="fas fa-envelope"></i> <span data-i18n="cta.get_in_touch">Get In Touch</span>
                 </a>
                 <a href="tel:+2290151790718" class="btn btn-secondary">
-                    <i class="fas fa-phone"></i> Call Me
+                    <i class="fas fa-phone"></i> <span data-i18n="cta.call_me">Call Me</span>
                 </a>
             </div>
         </div>
@@ -815,7 +819,7 @@
             <a href="https://github.com/francois-xavi" title="GitHub"><i class="fab fa-github"></i></a>
             <a href="https://bj.linkedin.com/in/fran%C3%A7ois-xavier-coudea" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
-        <p>&copy; 2025 François-Xavier Coudea. All rights reserved.</p>
+    <p data-i18n="footer.copyright">&copy; 2025 François-Xavier Coudea. All rights reserved.</p>
     </footer>
 
     <script>
@@ -861,6 +865,99 @@
                 orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
             });
         });
+
+        // --- Simple i18n language toggler (EN / FR) ---
+        (function() {
+            const translations = {
+                en: {
+                    'nav.about': 'About',
+                    'nav.skills': 'Skills',
+                    'nav.experience': 'Experience',
+                    'nav.contact': 'Contact',
+
+                    'hero.greeting': "Hello! I'm <span>François-Xavier Coudea</span>",
+                    'hero.title': 'Backend Developer<br><span class="highlight">Python & Django Specialist</span>',
+                    'hero.subtitle': 'Crafting robust and scalable backend solutions',
+                    'hero.detail': 'Building scalable APIs, automating workflows, and creating efficient data pipelines. Currently expanding into Data Engineering with a passion for delivering real business impact.',
+
+                    'cta.view_projects': 'View Projects',
+                    'cta.contact_me': 'Contact Me',
+                    'cta.title': "Let's Work Together",
+                    'cta.description': "I'm currently looking to join a cross-functional team that values improving people's lives through accessible design.",
+                    'cta.get_in_touch': 'Get In Touch',
+                    'cta.call_me': 'Call Me',
+
+                    'about.title': 'About Me',
+                    'about.content': 'Results-driven Backend Developer specialized in Python and Django REST API, with proven experience building scalable APIs, automating workflows, and deploying containerized applications. I use n8n to create efficient automation and data pipelines (ETL, synchronization, integration). Currently expanding my skills toward Data Engineering, I\'m available for freelance projects focused on backend development, automation, and data integration that deliver real business impact.',
+
+                    'skills.title': 'Technical Skills',
+                    'experience.title': 'Work Experience',
+                    'projects.title': 'Featured Projects',
+
+                    'footer.copyright': '&copy; 2025 François-Xavier Coudea. All rights reserved.'
+                },
+                fr: {
+                    'nav.about': 'À propos',
+                    'nav.skills': 'Compétences',
+                    'nav.experience': 'Expérience',
+                    'nav.contact': 'Contact',
+
+                    'hero.greeting': "Bonjour ! Je suis <span>François-Xavier Coudea</span>",
+                    'hero.title': 'Développeur Backend<br><span class="highlight">Spécialiste Python & Django</span>',
+                    'hero.subtitle': 'Conception de solutions backend robustes et évolutives',
+                    'hero.detail': "Conception d'API scalables, automatisation des workflows et création de pipelines de données efficaces. Actuellement en montée en compétence en Data Engineering, avec une passion pour l'impact métier.",
+
+                    'cta.view_projects': 'Voir les projets',
+                    'cta.contact_me': 'Me contacter',
+                    'cta.title': 'Travaillons ensemble',
+                    'cta.description': "Je cherche actuellement à rejoindre une équipe interfonctionnelle qui valorise l'amélioration de la vie des gens grâce à un design accessible.",
+                    'cta.get_in_touch': 'Contactez-moi',
+                    'cta.call_me': 'Appelez-moi',
+
+                    'about.title': 'À propos de moi',
+                    'about.content': "Développeur backend axé sur les résultats, spécialisé en Python et Django REST API, avec une expérience avérée dans la création d'API scalables, l'automatisation des workflows et le déploiement d'applications conteneurisées. J'utilise n8n pour créer des automatisations et pipelines de données (ETL, synchronisation, intégration). En développement vers le Data Engineering, je suis disponible pour des missions freelance axées sur le backend, l'automatisation et l'intégration de données.",
+
+                    'skills.title': 'Compétences techniques',
+                    'experience.title': 'Expérience professionnelle',
+                    'projects.title': 'Projets phares',
+
+                    'footer.copyright': '&copy; 2025 François-Xavier Coudea. Tous droits réservés.'
+                }
+            };
+
+            function applyTranslations(lang) {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    const txt = (translations[lang] && translations[lang][key]) || null;
+                    if (txt !== null) {
+                        // Use innerHTML because some translations include small HTML like <span> or <br>
+                        el.innerHTML = txt;
+                    }
+                });
+                document.documentElement.lang = lang;
+                const btn = document.getElementById('lang-toggle');
+                if (btn) btn.textContent = lang.toUpperCase();
+                localStorage.setItem('lang', lang);
+            }
+
+            function toggleLanguage() {
+                const current = localStorage.getItem('lang') || (navigator.language && navigator.language.startsWith('fr') ? 'fr' : 'en');
+                const next = current === 'en' ? 'fr' : 'en';
+                applyTranslations(next);
+            }
+
+            // Initialize
+            const saved = localStorage.getItem('lang');
+            const initial = saved || (navigator.language && navigator.language.startsWith('fr') ? 'fr' : 'en');
+            applyTranslations(initial);
+
+            const toggleBtn = document.getElementById('lang-toggle');
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', () => toggleLanguage());
+                // ensure button shows current language
+                toggleBtn.textContent = initial.toUpperCase();
+            }
+        })();
     </script>
 </body>
 </html>
