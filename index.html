@@ -616,7 +616,7 @@
         </div>
         <div>
             <!-- Language toggle button -->
-            <button id="lang-toggle" class="btn" aria-label="Toggle language" title="Toggle language">EN</button>
+            <button id="lang-toggle" class="btn" aria-label="Toggle language" title="Toggle language">FR</button>
         </div>
     </nav>
 
@@ -902,7 +902,7 @@
                     'nav.experience': 'Expérience',
                     'nav.contact': 'Contact',
 
-                    'hero.greeting': "Bonjour ! Je suis <span>François-Xavier Coudea</span>",
+                    'hero.greeting': "Salut ! Je suis <span>François-Xavier Coudea</span>",
                     'hero.title': 'Développeur Backend<br><span class="highlight">Spécialiste Python & Django</span>',
                     'hero.subtitle': 'Conception de solutions backend robustes et évolutives',
                     'hero.detail': "Conception d'API scalables, automatisation des workflows et création de pipelines de données efficaces. Actuellement en montée en compétence en Data Engineering, avec une passion pour l'impact métier.",
@@ -936,26 +936,28 @@
                 });
                 document.documentElement.lang = lang;
                 const btn = document.getElementById('lang-toggle');
-                if (btn) btn.textContent = lang.toUpperCase();
+                next_lang = lang === 'en' ? 'fr' : 'en';
+                if (btn) btn.textContent = next_lang.toUpperCase();
                 localStorage.setItem('lang', lang);
             }
 
             function toggleLanguage() {
-                const current = localStorage.getItem('lang') || (navigator.language && navigator.language.startsWith('fr') ? 'fr' : 'en');
+                const current = localStorage.getItem('lang') || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'fr');
                 const next = current === 'en' ? 'fr' : 'en';
                 applyTranslations(next);
             }
 
             // Initialize
             const saved = localStorage.getItem('lang');
-            const initial = saved || (navigator.language && navigator.language.startsWith('fr') ? 'fr' : 'en');
+            const initial = saved || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'fr');
             applyTranslations(initial);
 
             const toggleBtn = document.getElementById('lang-toggle');
             if (toggleBtn) {
                 toggleBtn.addEventListener('click', () => toggleLanguage());
-                // ensure button shows current language
-                toggleBtn.textContent = initial.toUpperCase();
+                // ensure button shows next language
+                next_lang = initial === 'en' ? 'fr' : 'en';
+                toggleBtn.textContent = next_lang.toUpperCase();
             }
         })();
     </script>
